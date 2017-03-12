@@ -9,7 +9,7 @@
             <div id="profile-avatar">
 
                 <div>
-                    <img src="/avatars/adele.jpg"
+                    <img src="/avatars/Adele.jpg"
                          alt="User image"
                          class="profile-avatar"
                          style="float: left; margin-right: 5px"
