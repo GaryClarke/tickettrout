@@ -8,7 +8,7 @@
         <div id="profile-avatar">
 
             <div>
-                <img src="/avatars/coldrick.jpg"
+                <img src="{{ $user->avatar }}"
                      alt="User image"
                      class="profile-avatar"
                 >

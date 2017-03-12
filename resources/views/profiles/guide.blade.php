@@ -17,6 +17,8 @@
                 <li>Not always taking the full allocation of tickets</li>
                 <li>Having <i>sensible</i> wishlists which reflect those of genuine fans</li>
             </ul>
+            <h3>Is The System Tout Proof?</h3>
+            <p>Yes and no. We can't keep touts from using the site but they'll be wasting their time if they think that they are going to make money from it. They'd be better off waiting tables.</p>
         </article>
     </div>
 </div>
