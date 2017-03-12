@@ -106,7 +106,7 @@
                     <h2>Total to Pay £178</h2>
 
                     <button type="submit"
-                            class="btn btn-success btn-sm btn-block"
+                            class="btn btn-success btn-block"
                             onclick="this.blur();"
                             style="margin-top: 20px;"
                     >
@@ -115,7 +115,7 @@
 
 
                     <button type="submit"
-                            class="btn btn-primary btn-sm btn-block"
+                            class="btn btn-primary btn-block"
                             onclick="this.blur();"
                             style="margin-top: 50px;"
                     >
