@@ -1,0 +1,97 @@
+<template>
+
+    <div role="tabpanel" class="tab-pane active">
+        <div class="content">
+            <div v-for="artist in artists" class="card-wrap card-sm-wrap">
+                <article class="card card-league panel panel-default">
+
+
+                    <!-- LEAGUE BADGE -->
+                    <img :src="artist.banner" alt="Artist banner" class="img-responsive card-image">
+
+                    <!-- CARD BODY -->
+                    <div class="card-details card-content panel-body">
+
+                        <!-- CREATOR AVATAR -->
+                        <a :href="`/avatars/${artist.id}`">
+                            <img :src="artist.avatar" alt="League creator image"
+                                 class="img-responsive img-circle card-avatar">
+                        </a>
+
+
+                        <!-- LEAGUE NAME -->
+                        <h2 style="margin-top: 0">
+                            <a :href="`/artists/${artist.id}`" style="color: #444">{{ artist.name }}</a>
+                        </h2>
+
+                        <!--<small>-->
+
+                        <!--</small>-->
+
+                        <!-- LEAGUE CREATOR NAME -->
+                        <div class="card-author">
+                            Some spiel
+                            <a href="#">about something</a>
+                            <span class="card-block">{{ artist.touring }}</span>
+                        </div>
+
+                        <!-- JOIN LINK -->
+                        <h3>
+                            <a :href="`/artists/${artist.id}/add`">
+                                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                Wishlist
+                            </a>
+                        </h3>
+                    </div>
+
+                </article>
+
+            </div>
+        </div>
+    </div>
+
+
+</template>
+
+<script>
+    export default {
+
+        data () {
+
+            return {
+
+                artists: '',
+
+            }
+        },
+
+        mounted () {
+
+            this.fetchArtists();
+
+
+        },
+
+        methods: {
+
+            fetchArtists() {
+
+                axios.get('/fetchartists')
+                        .then(this.handleFetchedArtists)
+                        .catch(this.handleFailedFetchedArtists);
+            },
+
+            handleFetchedArtists (response)
+            {
+                console.log(response.data);
+
+                this.artists = response.data;
+            },
+
+            handleFailedFetchedArtists(error)
+            {
+                console.log(error);
+            }
+        }
+    }
+</script>
