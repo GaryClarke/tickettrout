@@ -32,4 +32,6 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('offers', 'OfferController@show');
 });
 
+// Example comment
+
 
