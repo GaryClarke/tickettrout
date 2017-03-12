@@ -1,5 +1,5 @@
 <div class="non-flex-content" id="screen-feed-content">
-    <div class="post" style="min-width: 400px">
+    <div class="post">
         <article class="card card-post panel panel-default" style="padding: 15px">
             <h2>Your Tickets In One Click!</h2>
             <p><b>Would you be excited if you logged in to see this?</b> No scrambling around, inputting your new credit

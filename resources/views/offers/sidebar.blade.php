@@ -117,7 +117,7 @@
                     <button type="submit"
                             class="btn btn-primary btn-sm btn-block"
                             onclick="this.blur();"
-                            style="margin-top: 20px;"
+                            style="margin-top: 50px;"
                     >
                         RELEASE TO OTHERS (400 points)
                     </button>
