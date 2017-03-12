@@ -116,7 +116,7 @@ div .btn-new-league {
 
 @media (min-width: 769px) {
   .card-league {
-    min-width: 250px;
+    min-width: 225px;
   }
 }
 
@@ -317,7 +317,7 @@ label.error {
   font-family: 'Gidugu', sans-serif;
   font-size: 6.5em;
   text-align: center;
-  color: #0071AF;
+  color: #ff7d00;
   margin-bottom: 20px
 }
 
@@ -997,12 +997,12 @@ span.input-filename {
   float: right;
   margin-top: 11px;
   margin-right: 15px;
-  color: #003d5f;
+  color: darken(#ff7d00, 25%);
   font-size: 1.8em;
 }
 
 .nav-button:hover, .nav-button:focus {
-  color: darken(#003d5f, 10%);
+  color: darken(#ff7d00, 35%);
   cursor: pointer;
 }
 
@@ -1159,6 +1159,20 @@ form {
   }
 }
 
+.btn-link {
+  border-radius: 0;
+  border-width: 0;
+  color: white;
+  padding: 10px 15px;
+  width: 100%;
+  text-align: left;
+}
+
 .btn-link:hover, .btn-link:active, .btn-link:focus {
-  background: #0071af;
+  background: darken(#ff7d00, 10%);
+  color: white;
+}
+
+.nav-stacked > li > form .btn-link:focus {
+  background: darken(#ff7d00, 10%);
 }

@@ -36,7 +36,7 @@
         <li>
             <form method="post" action="{{ route('logout') }}">
                 {{ csrf_field() }}
-                <button type="submit" class="btn-link" style="color: white; padding: 7px 15px; width: 100%; text-align: left">
+                <button type="submit" class="btn-link">
                     <i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out
                 </button>
             </form>

@@ -115,7 +115,7 @@
 
 
                     <button type="submit"
-                            class="btn btn-warning btn-sm btn-block"
+                            class="btn btn-primary btn-sm btn-block"
                             onclick="this.blur();"
                             style="margin-top: 20px;"
                     >

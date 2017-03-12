@@ -23,11 +23,11 @@
         <div class="welcome-panel">
 
             {{-- Premdi Title --}}
-            <h1 class="welcome-title" style="color: #ff7d00">
+            <h1 class="welcome-title">
                 TicketTrout
             </h1>
 
-            <h3 style="text-align: center">(This is a prototype)</h3>
+            <h3 class="center">(This is a prototype)</h3>
 
 
             <div class="panel-body">
