@@ -1173,6 +1173,11 @@ form {
   color: white;
 }
 
-.nav-stacked > li > form .btn-link:focus {
+.nav-stacked > li > a:active, .nav-stacked > li > a:focus {
+  background: darken(#ff7d00, 10%);
+}
+
+.nav-stacked > li > form .btn-link:focus,
+.nav-stacked > li > form .btn-link:active {
   background: darken(#ff7d00, 10%);
 }

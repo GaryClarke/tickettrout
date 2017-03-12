@@ -8106,7 +8106,12 @@ form label {
   background: #cc6400;
   color: white;
 }
-.nav-stacked > li > form .btn-link:focus {
+.nav-stacked > li > a:active,
+.nav-stacked > li > a:focus {
+  background: #cc6400;
+}
+.nav-stacked > li > form .btn-link:focus,
+.nav-stacked > li > form .btn-link:active {
   background: #cc6400;
 }
 body.stop-scrolling {
