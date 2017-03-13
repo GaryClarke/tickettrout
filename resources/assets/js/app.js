@@ -14,6 +14,7 @@ require('./bootstrap');
  */
 
 Vue.component('artist-list', require('./vue-components/artist-list.vue'));
+Vue.component('offer-sidebar', require('./vue-components/offer-sidebar.vue'));
 
 
 const app = new Vue({

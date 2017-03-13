@@ -20,7 +20,7 @@
             </ul>
         </div>
 
-        @include('offers.sidebar')
+        <offer-sidebar :user="{{ auth()->user() }}"></offer-sidebar>
 
         @include('offers.guide')
     </div>

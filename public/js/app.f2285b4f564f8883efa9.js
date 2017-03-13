@@ -86,6 +86,7 @@ __webpack_require__(3);
  */
 
 Vue.component('artist-list', __webpack_require__(4));
+Vue.component('offer-sidebar', __webpack_require__(16));
 
 var app = new Vue({
   el: '#app'
@@ -409,6 +410,502 @@ if (false) {
 __webpack_require__(0);
 module.exports = __webpack_require__(1);
 
+
+/***/ }),
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = {
+
+    props: ['user'],
+
+    data: function data() {
+
+        return {
+
+            ticketAmount: 4,
+            seconds: 59,
+            minutes: 22,
+            bought: false
+        };
+    },
+
+
+    computed: {
+        totalCost: function totalCost() {
+
+            return this.ticketAmount * 44;
+        }
+    },
+
+    mounted: function mounted() {
+
+        setInterval(function () {
+
+            if (this.seconds == 0) {
+
+                this.seconds = 59;
+            } else {
+
+                --this.seconds;
+            }
+        }.bind(this), 1000);
+
+        setInterval(function () {
+
+            if (this.minutes == 0) {
+
+                this.minutes = 59;
+            } else {
+
+                --this.minutes;
+            }
+        }.bind(this), 1000 * 60);
+    },
+
+
+    methods: {
+        buyTickets: function buyTickets() {
+
+            this.bought = true;
+
+            swal({
+                title: "Great!",
+                text: "You're going to see Adele. Your tickets will be emailed to " + this.user.email,
+                imageUrl: "/banners/Adele400.jpg",
+                imageSize: "250x150",
+                confirmButtonText: 'Confirm',
+                html: true
+            });
+        }
+    }
+};
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(5)(
+  /* script */
+  __webpack_require__(15),
+  /* template */
+  __webpack_require__(17),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/gc/Code/trout2/resources/assets/js/vue-components/offer-sidebar.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] offer-sidebar.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-299323ec", Component.options)
+  } else {
+    hotAPI.reload("data-v-299323ec", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "sidebar",
+    attrs: {
+      "id": "sidebar-offers"
+    }
+  }, [_c('div', {
+    staticClass: "sidebar-banner card side-card card-pseudo"
+  }, [_c('div', {
+    staticClass: "card-details card-content panel-body"
+  }, [_c('div', {
+    attrs: {
+      "id": "profile-avatar"
+    }
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.bought),
+      expression: "!bought"
+    }]
+  }, [_c('h3', {
+    staticStyle: {
+      "margin-top": "0"
+    }
+  }, [_vm._v("Left:")]), _vm._v(" "), _c('h1', [_vm._v("4h " + _vm._s(_vm.minutes) + "m " + _vm._s(_vm.seconds) + "s")])]), _vm._v(" "), _c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.bought),
+      expression: "bought"
+    }]
+  }, [_c('h2', [_vm._v("Great!")]), _vm._v(" "), _c('h3', [_vm._v("You've bought Adele tickets at face value")])])]), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c('div', [_vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5), _vm._v(" "), _c('div', {
+    staticClass: "editable-attribute"
+  }, [_c('div', {
+    staticClass: "media"
+  }, [_c('div', {
+    staticClass: "media-body"
+  }, [_c('p', {
+    staticClass: "attribute-title"
+  }, [_vm._v("Quantity")]), _vm._v(" "), _c('p', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.bought),
+      expression: "!bought"
+    }]
+  }, [_c('select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.ticketAmount),
+      expression: "ticketAmount"
+    }],
+    staticStyle: {
+      "min-width": "80px",
+      "background-color": "white"
+    },
+    attrs: {
+      "name": "quantity",
+      "id": "quantity"
+    },
+    on: {
+      "change": function($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        });
+        _vm.ticketAmount = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+      }
+    }
+  }, [_c('option', {
+    attrs: {
+      "value": "1"
+    }
+  }, [_vm._v("1")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "2"
+    }
+  }, [_vm._v("2")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "3"
+    }
+  }, [_vm._v("3")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "4"
+    }
+  }, [_vm._v("4")])])]), _vm._v(" "), _c('p', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.bought),
+      expression: "bought"
+    }]
+  }, [_vm._v("\n                                    " + _vm._s(_vm.ticketAmount) + "\n                                ")])])])])]), _vm._v(" "), _c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.bought),
+      expression: "!bought"
+    }],
+    staticStyle: {
+      "text-align": "center"
+    }
+  }, [_c('h2', [_vm._v("Total to Pay £ " + _vm._s(_vm.totalCost))]), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-success btn-block",
+    staticStyle: {
+      "margin-top": "20px"
+    },
+    attrs: {
+      "type": "submit"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.buyTickets($event)
+      }
+    }
+  }, [_vm._v("\n                        BUY NOW\n                    ")]), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-primary btn-block",
+    staticStyle: {
+      "margin-top": "50px"
+    },
+    attrs: {
+      "type": "submit",
+      "onclick": "this.blur();"
+    }
+  }, [_vm._v("\n                        RELEASE TO OTHERS (400 points)\n                    ")])]), _vm._v(" "), _c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.bought),
+      expression: "bought"
+    }],
+    staticStyle: {
+      "text-align": "center"
+    }
+  }, [_c('h2', [_vm._v("Total Cost: £" + _vm._s(_vm.totalCost))])])])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('img', {
+    staticClass: "profile-avatar",
+    staticStyle: {
+      "float": "left",
+      "margin-right": "5px"
+    },
+    attrs: {
+      "src": "/avatars/Adele.jpg",
+      "alt": "User image"
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "editable-attribute"
+  }, [_c('div', {
+    staticClass: "media"
+  }, [_c('div', {
+    staticClass: "media-body"
+  }, [_c('p', {
+    staticClass: "attribute-title"
+  }, [_vm._v("Show")]), _vm._v(" "), _c('p', [_c('span', {
+    staticClass: "profile-attributes"
+  }, [_c('b', [_vm._v("Adele")])])])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "editable-attribute"
+  }, [_c('div', {
+    staticClass: "media"
+  }, [_c('div', {
+    staticClass: "media-body"
+  }, [_c('p', {
+    staticClass: "attribute-title"
+  }, [_vm._v("Venue")]), _vm._v(" "), _c('p', [_c('span', {
+    staticClass: "profile-attributes"
+  }, [_vm._v("\n                            Liverpool Echo Arena\n                        ")])])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "editable-attribute"
+  }, [_c('div', {
+    staticClass: "media"
+  }, [_c('div', {
+    staticClass: "media-body"
+  }, [_c('p', {
+    staticClass: "attribute-title"
+  }, [_vm._v("Date")]), _vm._v(" "), _c('p', [_c('span', {
+    staticClass: "profile-attributes"
+  }, [_vm._v("\n                            01/07/2017 - 7.30pm\n                        ")])])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "editable-attribute"
+  }, [_c('div', {
+    staticClass: "media"
+  }, [_c('div', {
+    staticClass: "media-body"
+  }, [_c('p', {
+    staticClass: "attribute-title"
+  }, [_vm._v("Ticket")]), _vm._v(" "), _c('p', [_c('span', {
+    staticClass: "profile-attributes"
+  }, [_vm._v("\n                            Seated (Lower Tier) "), _c('a', {
+    staticClass: "name-link float-right",
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("Full Details")])])])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "editable-attribute"
+  }, [_c('div', {
+    staticClass: "media"
+  }, [_c('div', {
+    staticClass: "media-body"
+  }, [_c('p', {
+    staticClass: "attribute-title"
+  }, [_vm._v("Price")]), _vm._v(" "), _c('p', [_c('span', {
+    staticClass: "profile-attributes"
+  }, [_vm._v("\n                            £44 (inc fees)\n                        ")])])])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-299323ec", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
