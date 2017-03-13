@@ -1,5 +1,5 @@
 <div class="non-flex-content" id="screen-feed-content">
-    <div class="post" style="min-width: 400px">
+    <div class="post">
         <article class="card card-post panel panel-default" style="padding: 15px">
             <h2 style="margin-top: 0">{{ $artist->name }} Activity</h2>
             <p>
@@ -7,7 +7,10 @@
             </p>
 
             <div class="media">
-                <div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="{{ $artist->video }}" width="640" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div>
+                {{--<div style="position:relative;height:0;padding-bottom:56.25%">--}}
+                    {{--<iframe src="{{ $artist->video }}" width="640" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe>--}}
+                {{--</div>--}}
+                <div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/k8TFiKDQC78?ecver=2" width="640" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div>
             </div>
 
             <h3>
