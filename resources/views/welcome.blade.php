@@ -23,9 +23,9 @@
         <div class="welcome-panel">
 
             {{-- Premdi Title --}}
-            <h1 class="welcome-title">
+            <h5 class="welcome-title">
                 TicketTrout
-            </h1>
+            </h5>
 
             <h3 class="center">(This is a prototype)</h3>
 
