@@ -25,6 +25,8 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::get('artists/{artist}', 'ArtistController@show');
 
+    Route::get('artists/{artist}/add', 'WishlistController@add');
+
     Route::get('fetchartists', 'ArtistController@fetchArtists');
 
     Route::get('profile', 'ProfileController@show');

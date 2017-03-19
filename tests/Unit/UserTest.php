@@ -27,6 +27,7 @@ class UserTest extends TestCase {
         $user->addToWishList($artist1);
         $user->addToWishList($artist2);
 
+
         // ACT
         // Get the wishlist
         $wishlist = $user->wishlist;

@@ -213,9 +213,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = {
     data: function data() {
@@ -238,9 +235,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.get('/fetchartists').then(this.handleFetchedArtists).catch(this.handleFailedFetchedArtists);
         },
         handleFetchedArtists: function handleFetchedArtists(response) {
-            console.log(response.data);
-
             this.artists = response.data.artists;
+
             this.wishlist = response.data.wishlist;
         },
         handleFailedFetchedArtists: function handleFailedFetchedArtists(error) {
@@ -248,6 +244,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         inWishList: function inWishList(id) {
             return _.includes(this.wishlist, id);
+        },
+        addToWishlist: function addToWishlist(artist) {
+            axios.get('/artists/' + artist.id + '/add').then(function (response) {
+
+                this.wishlist.push(response.data.new_artist);
+            }.bind(this)).catch(function (error) {
+
+                console.log('The artist could not be added');
+            });
         }
     }
 };
@@ -884,8 +889,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "min-height": "60px"
       }
     }, [_vm._v(_vm._s(artist.touring))])]), _vm._v(" "), _c('h3', [(!_vm.inWishList(artist.id)) ? _c('a', {
-      attrs: {
-        "href": ("/artists/" + (artist.id) + "/add")
+      on: {
+        "click": function($event) {
+          _vm.addToWishlist(artist)
+        }
       }
     }, [_c('i', {
       staticClass: "fa fa-plus-circle",
@@ -901,7 +908,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "aria-hidden": "true"
       }
-    }), _vm._v("\n                            Remove\n                        ")])])])])])
+    }), _vm._v("\n                        Remove\n                        ")])])])])])
   }))])
 },staticRenderFns: []}
 module.exports.render._withStripped = true

@@ -49,6 +49,15 @@ class User extends Authenticatable
 
     public function addToWishlist(Artist $artist)
     {
-        $this->wishlist()->attach($artist->id);
+        try {
+
+            $this->wishlist()->attach($artist->id);
+
+            return true;
+
+        } catch (\Exception $exception)
+        {
+            return false;
+        }
     }
 }

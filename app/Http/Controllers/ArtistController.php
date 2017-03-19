@@ -25,9 +25,7 @@ class ArtistController extends Controller {
         {
             $artists = Artist::orderBy('name', 'asc')->get();
 
-//            $wishlist = auth()->user()->wishlist->pluck('id');
-
-            $wishlist = [1, 2];
+            $wishlist = auth()->user()->wishlist->pluck('id');
 
             return response()->json(['artists' => $artists, 'wishlist' => $wishlist], 200);
         }
