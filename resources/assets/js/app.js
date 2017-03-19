@@ -13,7 +13,10 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+
+Vue.component('artists-page', require('./vue-components/artists-page.vue'));
 Vue.component('artist-list', require('./vue-components/artist-list.vue'));
+Vue.component('wishlist', require('./vue-components/wishlist.vue'));
 Vue.component('offer-sidebar', require('./vue-components/offer-sidebar.vue'));
 
 

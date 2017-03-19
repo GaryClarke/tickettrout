@@ -138,7 +138,9 @@ __webpack_require__(5);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.component('artists-page', __webpack_require__(21));
 Vue.component('artist-list', __webpack_require__(6));
+Vue.component('wishlist', __webpack_require__(18));
 Vue.component('offer-sidebar', __webpack_require__(7));
 
 var app = new Vue({
@@ -208,21 +210,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = {
-    data: function data() {
 
-        return {
+    props: ['artist'],
 
-            artists: '',
-            wishlist: ''
-        };
-    },
     mounted: function mounted() {
 
         this.fetchArtists();
@@ -241,9 +233,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         handleFailedFetchedArtists: function handleFailedFetchedArtists(error) {
             console.log(error);
-        },
-        inWishList: function inWishList(id) {
-            return _.includes(this.wishlist, id);
         },
         addToWishlist: function addToWishlist(artist) {
             axios.put('/wishlist/' + artist.id).then(function (response) {
@@ -847,81 +836,64 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "tab-pane active",
+    staticClass: "card-wrap card-sm-wrap"
+  }, [_c('article', {
+    staticClass: "card card-league panel panel-default"
+  }, [_c('img', {
+    staticClass: "img-responsive card-image",
     attrs: {
-      "role": "tabpanel"
+      "src": _vm.artist.banner,
+      "alt": "Artist banner"
     }
-  }, [_c('div', {
-    staticClass: "content"
-  }, _vm._l((_vm.artists), function(artist) {
-    return _c('div', {
-      staticClass: "card-wrap card-sm-wrap"
-    }, [_c('article', {
-      staticClass: "card card-league panel panel-default"
-    }, [_c('img', {
-      staticClass: "img-responsive card-image",
-      attrs: {
-        "src": artist.banner,
-        "alt": "Artist banner"
-      }
-    }), _vm._v(" "), _c('div', {
-      staticClass: "card-details card-content panel-body"
-    }, [_c('a', {
-      attrs: {
-        "href": ("/avatars/" + (artist.id))
-      }
-    }, [_c('img', {
-      staticClass: "img-responsive img-circle card-avatar",
-      attrs: {
-        "src": artist.avatar,
-        "alt": "League creator image"
-      }
-    })]), _vm._v(" "), _c('h2', {
-      staticStyle: {
-        "margin-top": "0"
-      }
-    }, [_c('a', {
-      staticStyle: {
-        "color": "#444"
-      },
-      attrs: {
-        "href": ("/artists/" + (artist.id))
-      }
-    }, [_vm._v(_vm._s(artist.name))])]), _vm._v(" "), _c('div', {
-      staticClass: "card-author"
-    }, [_vm._v("\n                        Some spiel\n                        "), _c('a', {
-      attrs: {
-        "href": "#"
-      }
-    }, [_vm._v("about something")]), _vm._v(" "), _c('span', {
-      staticClass: "card-block",
-      staticStyle: {
-        "min-height": "60px"
-      }
-    }, [_vm._v(_vm._s(artist.touring))])]), _vm._v(" "), _c('h3', [(!_vm.inWishList(artist.id)) ? _c('a', {
-      on: {
-        "click": function($event) {
-          _vm.addToWishlist(artist)
-        }
-      }
-    }, [_c('i', {
-      staticClass: "fa fa-plus-circle",
-      attrs: {
-        "aria-hidden": "true"
-      }
-    }), _vm._v("\n                            Wishlist\n                        ")]) : _c('a', {
-      on: {
-        "click": function($event) {
-          _vm.removeFromWishlist(artist)
-        }
-      }
-    }, [_c('i', {
-      staticClass: "fa fa-minus-circle",
-      attrs: {
-        "aria-hidden": "true"
-      }
-    }), _vm._v("\n                            Remove\n                        ")])])])])])
-  }))])
+  }), _vm._v(" "), _c('div', {
+    staticClass: "card-details card-content panel-body"
+  }, [_c('a', {
+    attrs: {
+      "href": ("/avatars/" + (_vm.artist.id))
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive img-circle card-avatar",
+    attrs: {
+      "src": _vm.artist.avatar,
+      "alt": "League creator image"
+    }
+  })]), _vm._v(" "), _c('h2', {
+    staticStyle: {
+      "margin-top": "0"
+    }
+  }, [_c('a', {
+    staticStyle: {
+      "color": "#444"
+    },
+    attrs: {
+      "href": ("/artists/" + (_vm.artist.id))
+    }
+  }, [_vm._v(_vm._s(_vm.artist.name))])]), _vm._v(" "), _c('div', {
+    staticClass: "card-author"
+  }, [_vm._v("\n                Some spiel\n                "), _c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("about something")]), _vm._v(" "), _c('span', {
+    staticClass: "card-block",
+    staticStyle: {
+      "min-height": "60px"
+    }
+  }, [_vm._v(_vm._s(_vm.artist.touring))])]), _vm._v(" "), _c('h3', [(_vm.artist.in_wishlist) ? _c('a', {
+    staticStyle: {
+      "color": "#cb2e35"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-minus-circle",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }), _vm._v("\n                    Remove\n                ")]) : _c('a', [_c('i', {
+    staticClass: "fa fa-plus-circle",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }), _vm._v("\n                    Wishlist\n                ")])])])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -938,6 +910,292 @@ if (false) {
 __webpack_require__(1);
 module.exports = __webpack_require__(2);
 
+
+/***/ }),
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */,
+/* 16 */,
+/* 17 */,
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  null,
+  /* template */
+  __webpack_require__(19),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/gc/Code/trout2/resources/assets/js/vue-components/wishlist.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] wishlist.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-02bebe54", Component.options)
+  } else {
+    hotAPI.reload("data-v-02bebe54", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "tab-pane",
+    attrs: {
+      "role": "tabpanel",
+      "id": "wishlist"
+    }
+  }, [_vm._v("\n    Poo\n")])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-02bebe54", module.exports)
+  }
+}
+
+/***/ }),
+/* 20 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+Vue.component('artist-list', __webpack_require__(6));
+Vue.component('wishlist', __webpack_require__(18));
+
+/* harmony default export */ __webpack_exports__["default"] = {
+    data: function data() {
+
+        return {
+
+            artists: '',
+            wishlist: ''
+        };
+    },
+    mounted: function mounted() {
+
+        this.fetchArtists();
+    },
+
+
+    methods: {
+        fetchArtists: function fetchArtists() {
+
+            axios.get('/fetchartists').then(this.handleFetchedArtists).catch(this.handleFailedFetchedArtists);
+        },
+        handleFetchedArtists: function handleFetchedArtists(response) {
+            this.artists = response.data.artists;
+
+            this.wishlist = response.data.wishlist;
+        },
+        handleFailedFetchedArtists: function handleFailedFetchedArtists(error) {
+            console.log(error);
+        }
+    }
+};
+
+/***/ }),
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(20),
+  /* template */
+  __webpack_require__(22),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/gc/Code/trout2/resources/assets/js/vue-components/artists-page.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] artists-page.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5a6fe93f", Component.options)
+  } else {
+    hotAPI.reload("data-v-5a6fe93f", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "wrap tab-pane active",
+    attrs: {
+      "id": "screen-leagues"
+    }
+  }, [_c('div', {
+    staticClass: "content",
+    attrs: {
+      "id": "leagues-nav"
+    }
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "tab-content"
+  }, [_c('div', {
+    staticClass: "tab-pane active",
+    attrs: {
+      "role": "tabpanel",
+      "id": "artists"
+    }
+  }, [_c('div', {
+    staticClass: "content"
+  }, _vm._l((_vm.artists), function(artist) {
+    return _c('artist-list', {
+      attrs: {
+        "artist": artist
+      }
+    })
+  }))]), _vm._v(" "), _c('div', {
+    staticClass: "tab-pane",
+    attrs: {
+      "role": "tabpanel",
+      "id": "wishlist"
+    }
+  }, [_c('div', {
+    staticClass: "content"
+  }, _vm._l((_vm.wishlist), function(artist) {
+    return _c('artist-list', {
+      attrs: {
+        "artist": artist
+      }
+    })
+  }))])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('ul', {
+    staticClass: "nav nav-tabs filter-tabs",
+    attrs: {
+      "role": "tablist"
+    }
+  }, [_c('li', {
+    staticClass: "active",
+    attrs: {
+      "role": "presentation"
+    }
+  }, [_c('a', {
+    attrs: {
+      "href": "#artists",
+      "aria-controls": "artists",
+      "role": "tab",
+      "data-toggle": "tab"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-microphone",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }), _vm._v(" Artists\n                ")])]), _vm._v(" "), _c('li', {
+    attrs: {
+      "role": "presentation"
+    }
+  }, [_c('a', {
+    attrs: {
+      "href": "#wishlist",
+      "aria-controls": "wishlist",
+      "role": "tab",
+      "data-toggle": "tab"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-heart",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }), _vm._v(" Wishlist\n                ")])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-5a6fe93f", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
