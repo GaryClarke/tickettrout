@@ -17,8 +17,8 @@ class CreateArtistsTable extends Migration {
         {
             $table->increments('id');
             $table->string('name');
-            $table->string('banner');
-            $table->string('banner_lg');
+            $table->string('banner')->nullable();
+            $table->string('banner_lg')->nullable();
             $table->string('avatar')->nullable();
             $table->string('touring')->nullable();
             $table->string('video')->nullable();

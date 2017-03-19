@@ -2,7 +2,7 @@
 
     <div class="card-details card-content panel-body">
 
-        <h3 style="margin-top: 0">{{ $user->name }}</h3>
+        <h3 style="margin-top: 0">{{ $user->fullName }}</h3>
 
         {{-- AVATAR--}}
         <div id="profile-avatar">

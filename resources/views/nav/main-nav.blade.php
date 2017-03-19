@@ -18,11 +18,7 @@
                 <i class="fa fa-user" aria-hidden="true"></i> Profile
             </a>
         </li>
-        {{--<li>--}}
-        {{--<a href="/leagues">--}}
-        {{--<i class="fa fa-heart" aria-hidden="true"></i> Wishlist--}}
-        {{--</a>--}}
-        {{--</li>--}}
+
         <li>
             <a href="/offers">
                 <i class="fa fa-ticket" aria-hidden="true"></i> Offers <span style="background: white;
@@ -47,24 +43,5 @@
 
         </li>
 
-
-        {{-- Permitted only pages --}}
-        {{--@can('update_matches')--}}
-        {{--<hr>--}}
-        {{--<li>--}}
-        {{--<a href="/updatematches">--}}
-        {{--<i class="fa fa-futbol-o" aria-hidden="true"></i> Update Scores--}}
-        {{--</a>--}}
-        {{--</li>--}}
-        {{--@endcan--}}
-
-        {{--@can('calculate_points')--}}
-        {{--<li>--}}
-        {{--<a href="/calculatepoints">--}}
-        {{--<i class="fa fa-calculator" aria-hidden="true"></i> Calculate Points--}}
-        {{--</a>--}}
-        {{--</li>--}}
-
-        {{--@endcan--}}
     </ul>
 </nav>

@@ -42,7 +42,6 @@
 
                 <div class="tab-content">
                     <artist-list></artist-list>
-
                 </div>
 
                 {{-- ARTISTS PANEL --}}

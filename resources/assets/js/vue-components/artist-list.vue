@@ -32,14 +32,18 @@
                         <div class="card-author">
                             Some spiel
                             <a href="#">about something</a>
-                            <span class="card-block">{{ artist.touring }}</span>
+                            <span class="card-block" style="min-height: 60px">{{ artist.touring }}</span>
                         </div>
 
                         <!-- JOIN LINK -->
                         <h3>
-                            <a :href="`/artists/${artist.id}/add`">
+                            <a v-if="!inWishList(artist.id)" :href="`/artists/${artist.id}/add`">
                                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
                                 Wishlist
+                            </a>
+                            <a v-else="!inWishList(artist.id)" :href="`/artists/${artist.id}/remove`">
+                                <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                                Remove
                             </a>
                         </h3>
                     </div>
@@ -61,15 +65,14 @@
             return {
 
                 artists: '',
-
+                wishlist: ''
             }
         },
+
 
         mounted () {
 
             this.fetchArtists();
-
-
         },
 
         methods: {
@@ -85,12 +88,19 @@
             {
                 console.log(response.data);
 
-                this.artists = response.data;
+                this.artists = response.data.artists;
+                this.wishlist = response.data.wishlist;
             },
 
             handleFailedFetchedArtists(error)
             {
                 console.log(error);
+            },
+
+
+            inWishList(id)
+            {
+                return _.includes(this.wishlist, id);
             }
         }
     }

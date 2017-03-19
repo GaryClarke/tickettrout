@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Artist;
+use App\User;
 
 
 class ArtistController extends Controller {
@@ -17,13 +18,18 @@ class ArtistController extends Controller {
         return view('artists.artist', compact('artist'));
     }
 
+
     public function fetchArtists()
     {
         if (request()->json())
         {
             $artists = Artist::orderBy('name', 'asc')->get();
 
-            return response()->json($artists, 200);
+//            $wishlist = auth()->user()->wishlist->pluck('id');
+
+            $wishlist = [1, 2];
+
+            return response()->json(['artists' => $artists, 'wishlist' => $wishlist], 200);
         }
 
         abort(403, 'No way José');

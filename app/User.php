@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'name', 'email', 'password',
+        'first_name', 'last_name', 'email', 'password',
     ];
 
     /**
@@ -26,4 +26,29 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    /**
+     * Users full name
+     *
+     * @return string
+     */
+    public function getFullNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
+
+    /**************************************** Wishlist ****************************************/
+
+    public function wishlist()
+    {
+        return $this->belongsToMany(Artist::class);
+    }
+
+
+    public function addToWishlist(Artist $artist)
+    {
+        $this->wishlist()->attach($artist->id);
+    }
 }
