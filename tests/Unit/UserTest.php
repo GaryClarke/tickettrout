@@ -39,4 +39,33 @@ class UserTest extends TestCase {
         // Containing the correct data
         $this->assertEquals($artist1->fresh()->name, $wishlist->first()->name);
     }
+
+
+    /** @test */
+    function artists_can_be_removed_from_the_users_wishlist()
+    {
+        // ARRANGE
+        // 2 artists
+        $artist1 = factory(Artist::class)->create();
+        $artist2 = factory(Artist::class)->create();
+        $artist3 = factory(Artist::class)->create();
+
+        // A user
+        $user = factory(User::class)->create();
+
+        // Add 2 artists to the users wishlist
+        $user->addToWishList($artist1);
+        $user->addToWishList($artist2);
+
+        // ACT
+        // Remove one of the artists from the users wishlist
+        $user->removeFromWishlist($artist1);
+
+        // ASSERT
+        // 2 artists
+        $this->assertCount(1, $user->fresh()->wishlist);
+
+        // Containing the correct data
+        $this->assertTrue($user->wishlist->contains('id', $artist2->id));
+    }
 }

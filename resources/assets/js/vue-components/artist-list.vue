@@ -38,9 +38,9 @@
                                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
                                 Wishlist
                             </a>
-                            <a v-else :href="`/artists/${artist.id}/remove`">
-                            <i class="fa fa-minus-circle" aria-hidden="true"></i>
-                            Remove
+                            <a v-else @click="removeFromWishlist(artist)">
+                                <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                                Remove
                             </a>
                         </h3>
                     </div>
@@ -102,7 +102,7 @@
 
             addToWishlist(artist)
             {
-                axios.get(`/artists/${artist.id}/add`)
+                axios.put(`/wishlist/${artist.id}`)
                         .then(function (response) {
 
                             this.wishlist.push(response.data.new_artist);
@@ -112,6 +112,22 @@
 
                             console.log('The artist could not be added');
                         });
+            },
+
+
+            removeFromWishlist(artist)
+            {
+                axios.delete(`/wishlist/${artist.id}`)
+                        .then(function (response) {
+
+                            var index = this.wishlist.indexOf(response.data.removed);
+                            if (index != -1) this.wishlist.splice(index, 1);
+
+                        }.bind(this))
+                        .catch(function () {
+
+                            console.log('The artist could not be removed');
+                        })
             }
         }
     }

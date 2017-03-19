@@ -25,7 +25,9 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::get('artists/{artist}', 'ArtistController@show');
 
-    Route::get('artists/{artist}/add', 'WishlistController@add');
+    Route::put('wishlist/{artist}', 'WishlistController@add');
+
+    Route::delete('wishlist/{artist}', 'WishlistController@remove');
 
     Route::get('fetchartists', 'ArtistController@fetchArtists');
 

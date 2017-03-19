@@ -246,12 +246,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return _.includes(this.wishlist, id);
         },
         addToWishlist: function addToWishlist(artist) {
-            axios.get('/artists/' + artist.id + '/add').then(function (response) {
+            axios.put('/wishlist/' + artist.id).then(function (response) {
 
                 this.wishlist.push(response.data.new_artist);
             }.bind(this)).catch(function (error) {
 
                 console.log('The artist could not be added');
+            });
+        },
+        removeFromWishlist: function removeFromWishlist(artist) {
+            axios.delete('/wishlist/' + artist.id).then(function (response) {
+
+                var index = this.wishlist.indexOf(response.data.removed);
+                if (index != -1) this.wishlist.splice(index, 1);
+            }.bind(this)).catch(function () {
+
+                console.log('The artist could not be removed');
             });
         }
     }
@@ -900,15 +910,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "aria-hidden": "true"
       }
     }), _vm._v("\n                            Wishlist\n                        ")]) : _c('a', {
-      attrs: {
-        "href": ("/artists/" + (artist.id) + "/remove")
+      on: {
+        "click": function($event) {
+          _vm.removeFromWishlist(artist)
+        }
       }
     }, [_c('i', {
       staticClass: "fa fa-minus-circle",
       attrs: {
         "aria-hidden": "true"
       }
-    }), _vm._v("\n                        Remove\n                        ")])])])])])
+    }), _vm._v("\n                            Remove\n                        ")])])])])])
   }))])
 },staticRenderFns: []}
 module.exports.render._withStripped = true

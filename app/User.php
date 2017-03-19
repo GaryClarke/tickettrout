@@ -60,4 +60,19 @@ class User extends Authenticatable
             return false;
         }
     }
+
+
+    public function removeFromWishlist(Artist $artist)
+    {
+        try {
+
+            $this->wishlist()->detach($artist->id);
+
+            return true;
+
+        } catch (\Exception $exception)
+        {
+            return false;
+        }
+    }
 }

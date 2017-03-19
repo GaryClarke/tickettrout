@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Artist;
-use Illuminate\Http\Request;
 
 class WishlistController extends Controller
 {
+
+    /**
+     * Add an artist to the wishlist
+     *
+     * @param Artist $artist
+     * @return \Illuminate\Contracts\Routing\ResponseFactory
+     */
     public function add(Artist $artist)
     {
         if (request()->json()) {
@@ -18,5 +24,29 @@ class WishlistController extends Controller
 
             return response(['new_artist' => null], 400);
         }
+
+        abort(403, 'Sorry, not sorry');
+    }
+
+
+    /**
+     * Remove an artist from the wishlist
+     *
+     * @param Artist $artist
+     * @return \Illuminate\Contracts\Routing\ResponseFactory
+     */
+    public function remove(Artist $artist)
+    {
+        if (request()->json()) {
+
+            if (auth()->user()->removeFromWishlist($artist)) {
+
+                return response()->json(['removed' => $artist->id], 202);
+            }
+
+            return response(['removed' => null], 400);
+        }
+
+        abort(403, 'Sorry, not sorry');
     }
 }
