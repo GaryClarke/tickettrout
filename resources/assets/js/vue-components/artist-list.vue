@@ -32,11 +32,11 @@
 
                 <!-- JOIN LINK -->
                 <h3>
-                    <a v-if="artist.in_wishlist" style="color: #cb2e35">
+                    <a v-if="artist.in_wishlist" @click="removeArtist(artist)" style="color: #cb2e35">
                         <i class="fa fa-minus-circle" aria-hidden="true"></i>
                         Remove
                     </a>
-                    <a v-else>
+                    <a v-else @click="addArtist(artist)">
                         <i class="fa fa-plus-circle" aria-hidden="true"></i>
                         Wishlist
                     </a>
@@ -57,61 +57,20 @@
 
         mounted () {
 
-            this.fetchArtists();
+
         },
 
         methods: {
 
-            fetchArtists() {
+            removeArtist(artist) {
 
-                axios.get('/fetchartists')
-                        .then(this.handleFetchedArtists)
-                        .catch(this.handleFailedFetchedArtists);
+                Event.$emit('removeArtist', artist);
             },
 
 
-            handleFetchedArtists (response)
-            {
-                this.artists = response.data.artists;
+            addArtist(artist) {
 
-                this.wishlist = response.data.wishlist;
-            },
-
-
-            handleFailedFetchedArtists(error)
-            {
-                console.log(error);
-            },
-
-
-            addToWishlist(artist)
-            {
-                axios.put(`/wishlist/${artist.id}`)
-                        .then(function (response) {
-
-                            this.wishlist.push(response.data.new_artist);
-
-                        }.bind(this))
-                        .catch(function (error) {
-
-                            console.log('The artist could not be added');
-                        });
-            },
-
-
-            removeFromWishlist(artist)
-            {
-                axios.delete(`/wishlist/${artist.id}`)
-                        .then(function (response) {
-
-                            var index = this.wishlist.indexOf(response.data.removed);
-                            if (index != -1) this.wishlist.splice(index, 1);
-
-                        }.bind(this))
-                        .catch(function () {
-
-                            console.log('The artist could not be removed');
-                        })
+                Event.$emit('addArtist', artist);
             }
         }
     }

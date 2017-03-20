@@ -8112,6 +8112,14 @@ form label {
 .nav-stacked > li > form .btn-link:active {
   background: #cc6400;
 }
+.nav-tabs > li.active > a.wishlink,
+.nav-tabs > li.active > a.wishlink {
+  color: #cb2e35;
+}
+.nav-tabs > li > a.wishlink:hover,
+.nav-tabs > li > a.wishlink:focus:hover {
+  color: #cb2e35;
+}
 body.stop-scrolling {
   height: 100%;
   overflow: hidden;

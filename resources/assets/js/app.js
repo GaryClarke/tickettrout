@@ -19,6 +19,7 @@ Vue.component('artist-list', require('./vue-components/artist-list.vue'));
 Vue.component('wishlist', require('./vue-components/wishlist.vue'));
 Vue.component('offer-sidebar', require('./vue-components/offer-sidebar.vue'));
 
+window.Event = new Vue();
 
 const app = new Vue({
     el: '#app',

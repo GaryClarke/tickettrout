@@ -19,6 +19,7 @@
                 <!-- Wishlist -->
                 <li role="presentation">
                     <a href="#wishlist"
+                       class="wishlink"
                        aria-controls="wishlist"
                        role="tab"
                        data-toggle="tab"
@@ -63,7 +64,8 @@
             return {
 
                 artists: '',
-                wishlist: ''
+                wishlist: '',
+                test: 'poo'
             }
         },
 
@@ -71,6 +73,21 @@
         mounted () {
 
             this.fetchArtists();
+        },
+
+
+        created () {
+
+            Event.$on('removeArtist', (artist) => {
+
+                this.removeFromWishlist(artist);
+            });
+
+
+            Event.$on('addArtist', (artist) => {
+
+                this.addToWishlist(artist);
+            });
         },
 
 
@@ -96,6 +113,47 @@
             {
                 console.log(error);
             },
+
+
+            addToWishlist(artist)
+            {
+                axios.put(`/wishlist/${artist.id}`)
+                        .then(function (response) {
+
+                            this.wishlist.push(response.data.new_artist);
+
+                            artist.in_wishlist = response.data.new_artist.in_wishlist;
+
+                        }.bind(this))
+                        .catch(function (error) {
+
+                            console.log('The artist could not be added');
+                        });
+            },
+
+
+            removeFromWishlist(artist)
+            {
+                axios.delete(`/wishlist/${artist.id}`)
+                        .then(function (response) {
+
+                            let removed = response.data.removed;
+
+                            let index = this.artists.findIndex((obj => obj.id == artist.id));
+
+                            this.artists[index].in_wishlist = removed.in_wishlist;
+
+                            this.wishlist = this.wishlist.filter(function (artist) {
+
+                                return artist.id !== removed.id;
+                            });
+
+                        }.bind(this))
+                        .catch(function () {
+
+                            console.log('The artist could not be removed');
+                        })
+            }
         }
     }
 

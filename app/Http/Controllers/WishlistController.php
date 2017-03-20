@@ -19,7 +19,7 @@ class WishlistController extends Controller
 
             if (auth()->user()->addToWishlist($artist)) {
 
-                return response()->json(['new_artist' => $artist->id], 201);
+                return response()->json(['new_artist' => $artist], 201);
             }
 
             return response(['new_artist' => null], 400);
@@ -41,7 +41,7 @@ class WishlistController extends Controller
 
             if (auth()->user()->removeFromWishlist($artist)) {
 
-                return response()->json(['removed' => $artist->id], 202);
+                return response()->json(['removed' => $artist], 202);
             }
 
             return response(['removed' => null], 400);
