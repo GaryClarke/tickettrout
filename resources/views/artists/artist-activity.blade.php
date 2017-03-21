@@ -12,10 +12,8 @@
                 </div>
             </div>
 
-            <h3>
-                <a href="#">Chat with {{ $artist->name }}...LIVE!</a>
-            </h3>
 
+            <h3><a href="#">Buy Exclusive {{ $artist->name }} merch here</a></h3>
             <h3>
                 2017 Summer tour dates
             </h3>
@@ -42,7 +40,9 @@
                     <b>Dublin</b> - Thursday 3rd August
                 </li>
             </ul>
-            <h3><a href="#">Buy Exclusive {{ $artist->name }} merch here</a></h3>
+            <h3>
+                <a href="#">Chat with {{ $artist->name }}...LIVE!</a>
+            </h3>
         </article>
     </div>
 </div>

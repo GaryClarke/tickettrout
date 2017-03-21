@@ -17,8 +17,8 @@
                 </a>
 
 
-                <!-- LEAGUE NAME -->
-                <h2 style="margin-top: 0">
+                <!-- ARTIST NAME -->
+                <h2 style="margin-top: 0; font-size: 1.8em">
                     <a :href="`/artists/${artist.id}`" style="color: #444">{{ artist.name }}</a>
                 </h2>
 
@@ -31,7 +31,7 @@
                 </div>
 
                 <!-- JOIN LINK -->
-                <h3>
+                <h3 style="font-size: 1.4em; margin-bottom: 0">
                     <a v-if="artist.in_wishlist" @click="removeArtist(artist)" style="color: #cb2e35">
                         <i class="fa fa-minus-circle" aria-hidden="true"></i>
                         Remove

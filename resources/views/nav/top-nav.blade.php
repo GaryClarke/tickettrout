@@ -1,7 +1,7 @@
 <nav class="top-nav navbar navbar-inverse navbar-fixed-top is-visible" data-nav-status="toggle">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/">GigWomble</a>
+            <a class="navbar-brand" href="/">TicketTrout</a>
 
             {{-- Hamburger --}}
             <a id="#main-nav" class="nav-button" data-toggle="toggle">
